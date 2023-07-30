@@ -1,24 +1,55 @@
-# README
+# ExpenZen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ExpenZen is a personal finance tracking app built with Ruby on Rails.
 
-Things you may want to cover:
+## Table of Contents
 
-* Ruby version
+- [General Info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Status](#status)
+- [Contact](#contact)
 
-* System dependencies
+## General Info
 
-* Configuration
+ExpenZen allows users to keep track of their income and expenses, set financial goals, and view financial reports.
 
-* Database creation
+## Technologies
 
-* Database initialization
+Project is created with:
 
-* How to run the test suite
+- Ruby version: 3.2.2
+- Rails version: 7.0.6
+- PostgreSQL: 12.15
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setup
 
-* Deployment instructions
+To run this project, install it locally using bundle:
 
-* ...
+- `$ bundle install`
+- `$ bin/rails db:create`
+- `$ bin/rails db:migrate`
+
+Then start the server:
+- `$ bin/rails s`
+
+## Features
+
+List of features:
+
+- Add, edit, and delete income and expenses
+- Set and track financial goals
+- View financial reports
+
+To-do list:
+- Add multi-currency support
+- Improve UI/UX design
+
+## Status
+
+Project is in progress. Regular updates and new features are being added.
+
+## Contact
+
+Created by [Oguzhan Ince](https://github.com/oguzsh) - feel free to contact at [oguzhan824@gmail.com](mailto:oguzhan824@gmail.com)!
