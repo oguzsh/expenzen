@@ -17,5 +17,9 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
     "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+  },
+  "devDependencies": {
+    "vite": "^4.3.0",
+    "vite-plugin-ruby": "^3.2.0"
   }
 }
