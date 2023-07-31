@@ -3,9 +3,9 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './frontend/**/*.{js,ts,tsx,tsx}'
   ],
-    plugins: [
+  plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography')
   ],

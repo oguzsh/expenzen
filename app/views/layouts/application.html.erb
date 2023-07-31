@@ -7,7 +7,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <%= vite_client_tag %>
+    <%= vite_react_refresh_tag %>
+    <%= vite_typescript_tag "application.tsx" %>
+
   </head>
 
   <body class="flex flex-col md:flex-row h-screen text-gray-800">
