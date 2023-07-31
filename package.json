@@ -22,8 +22,8 @@
     "vite-tsconfig-paths": "^4.2.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
+    "build": "esbuild ./frontend/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "tailwindcss --postcss -i ./frontend/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
     "prettier": "prettier -w --config .prettierrc.cjs"
   },
   "devDependencies": {
