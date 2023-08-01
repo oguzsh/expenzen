@@ -1,0 +1,54 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: <%=  RbConfig::CONFIG['RUBY_API_VERSION'] %>
+  DisplayCopNames: true
+  Exclude:
+    - 'node_modules/**/*'
+    - 'gemfiles/**/*'
+    - 'vendor/**/*'
+
+
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+  IncludeTernaryExpressions: false
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+Style/IfUnlessModifier:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/NegatedIf:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: false
+Metrics/LineLength:
+  Max: 120
+
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
