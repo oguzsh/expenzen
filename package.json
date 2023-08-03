@@ -24,7 +24,10 @@
   "scripts": {
     "build": "esbuild ./frontend/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
     "build:css": "tailwindcss --postcss -i ./frontend/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
-    "prettier": "prettier -w --config .prettierrc.cjs"
+    "prettier": "prettier -w .prettierrc",
+    "eslint": "eslint --color --ext .js,.jsx,.ts,.tsx,.graphql",
+    "eslint-fix": "eslint --color --fix --ext .js,.jsx,.ts,.tsx,.graphql",
+    "tsc": "tsc"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

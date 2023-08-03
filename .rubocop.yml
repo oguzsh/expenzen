@@ -8,7 +8,6 @@ AllCops:
     - 'gemfiles/**/*'
     - 'vendor/**/*'
 
-
 Style/TrailingCommaInArguments:
   Enabled: true
   EnforcedStyleForMultiline: consistent_comma

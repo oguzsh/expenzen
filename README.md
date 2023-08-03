@@ -32,6 +32,7 @@ To run this project, install it locally using bundle:
 - `$ bin/rails db:migrate`
 
 Then start the server:
+
 - `$ bin/rails s`
 
 ## Features
@@ -43,6 +44,7 @@ List of features:
 - View financial reports
 
 To-do list:
+
 - Add multi-currency support
 - Improve UI/UX design
 
