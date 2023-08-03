@@ -1,53 +1,174 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-performance
+  - rubocop-capybara
+  - rubocop-graphql
 
 AllCops:
-  TargetRubyVersion: <%=  RbConfig::CONFIG['RUBY_API_VERSION'] %>
-  DisplayCopNames: true
+  TargetRubyVersion: <%= RbConfig::CONFIG['RUBY_API_VERSION'] %>
+  MaxFilesInCache: 100000
   Exclude:
     - 'node_modules/**/*'
     - 'gemfiles/**/*'
     - 'vendor/**/*'
 
+Bundler/OrderedGems:
+  ConsiderPunctuation: true
+
+Layout/FirstArrayElementLineBreak:
+  Exclude:
+    - config/application.rb
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineAssignmentLayout:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/*/
+
+Lint/DeprecatedClassMethods:
+  Enabled: true
+
+Lint/NumberConversion:
+  Enabled: true
+
+Metrics/ClassLength:
+  Enabled: true
+  Max: 2500
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+RSpec/ContainExactly:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribedClassModuleWrapping:
+  Enabled: true
+  Include:
+    - spec/**/*_spec.rb
+
+RSpec/ExampleWording:
+  Enabled: false
+
+RSpec/MatchArray:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+Rails/SaveBang:
+  SafeAutoCorrect: false
+
+Rails/ActiveRecordAliases:
+  Enabled: false
+
+Rails/Exit:
+  Exclude: []
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+    - lib/**/*.{rb,rake}
+
+Rails/HttpPositionalArguments:
+  AutoCorrect: true
+  Include:
+    - spec/{controllers}/*/
+
+Rails/Output:
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+    - db/**/*.rb
+    - lib/**/*.rb
+    - spec/**/*.rb
+
+Rails/TimeZone:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - production
+    - staging
+    - test
+
+Rails/Validation:
+  Include:
+    - app/models/**/*.rb
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Exclude:
+    - ./*/bin/
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Include:
+    - '{app,config,spec}/**/*.rb'
+
+Style/GlobalVars:
+  AllowedVariables:
+    - $statsd
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  AllowedMethods:
+    - respond_to_missing?
+    # Sidekiq does not support keyword arguments.
+    - perform
+
 Style/TrailingCommaInArguments:
   Enabled: true
-  EnforcedStyleForMultiline: consistent_comma
-Style/TrailingCommaInArrayLiteral:
-  Enabled: true
-  EnforcedStyleForMultiline: consistent_comma
-Style/TrailingCommaInHashLiteral:
-  Enabled: true
-  EnforcedStyleForMultiline: consistent_comma
-Style/ConditionalAssignment:
-  EnforcedStyle: assign_inside_condition
-  IncludeTernaryExpressions: false
-Style/HashSyntax:
-  EnforcedStyle: ruby19_no_mixed_keys
-Style/IfUnlessModifier:
-  Enabled: false
-Style/NumericPredicate:
-  Enabled: false
-Style/WordArray:
-  Enabled: false
-Style/NegatedIf:
-  Enabled: false
-Style/Documentation:
+  EnforcedStyleForMultiline: no_comma
+
+Style/TrivialAccessors:
+  IgnoreClassMethods: true
+
+Lint/EmptyFile:
   Enabled: false
 
-Metrics/AbcSize:
-  Enabled: false
-Metrics/BlockLength:
-  Enabled: false
-Metrics/MethodLength:
-  Enabled: false
-Metrics/ModuleLength:
-  Enabled: false
-Metrics/ParameterLists:
-  Max: 5
-  CountKeywordArgs: false
-Metrics/LineLength:
-  Max: 120
+Rails/EnumHash:
+  Include:
+    - '**/app/models/**/*.rb'
 
-RSpec/ExampleLength:
-  Enabled: false
-RSpec/NestedGroups:
+Rails/InverseOf:
+  Include:
+    - '**/app/models/**/*.rb'
+
+Rails/LexicallyScopedActionFilter:
+  Include:
+    - '**/app/controllers/**/*.rb'
+    - '**/app/mailers/**/*.rb'
+
+Rails/UniqueValidationWithoutIndex:
   Enabled: false

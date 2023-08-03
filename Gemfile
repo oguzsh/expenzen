@@ -58,6 +58,10 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', '~> 1.55'
+  gem 'rubocop-factory_bot', '~> 2.23'
+  gem 'rubocop-graphql'
+  gem 'rubocop-performance', '~> 1.18'
+  gem 'rubocop-rails'
   gem 'rubocop-rspec'
 end
 
@@ -84,4 +88,4 @@ gem 'graphql', '~> 2.0'
 
 gem 'vite_rails', '~> 3.0'
 
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
