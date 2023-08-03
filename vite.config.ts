@@ -1,24 +1,21 @@
-import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
-import react from '@vitejs/plugin-react-swc'
-import environment from 'vite-plugin-environment'
-import fullReload from 'vite-plugin-full-reload'
-import {nodeResolve} from '@rollup/plugin-node-resolve'
-import resolve from 'path'
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import react from '@vitejs/plugin-react-swc';
+import resolve from 'path';
+import { defineConfig } from 'vite';
+import environment from 'vite-plugin-environment';
+import fullReload from 'vite-plugin-full-reload';
+import RubyPlugin from 'vite-plugin-ruby';
 
 export default defineConfig({
   esbuild: { jsx: 'automatic' },
   plugins: [
     environment({}),
     RubyPlugin(),
-    fullReload(['config/routes.rb', 'app/views/**/*'], {delay: 200}),
+    fullReload(['config/routes.rb', 'app/views/**/*'], { delay: 200 }),
     react(),
     nodeResolve({
-      modulePaths: [
-        'frontend',
-        'node_modules'
-      ],
-      extensions: ['.js', '.json', '.jsx', '.ts', '.tsx']
+      modulePaths: ['frontend', 'node_modules'],
+      extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
     }),
   ],
   build: {
@@ -29,27 +26,27 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-     {
-      find: '@components',
-      replacement: 'frontend/components'
-     },
       {
-      find: '@pages',
-      replacement: 'frontend/pages'
-     },
+        find: '@components',
+        replacement: 'frontend/components',
+      },
       {
-      find: '@layouts',
-      replacement: 'frontend/layouts'
-     },
+        find: '@pages',
+        replacement: 'frontend/pages',
+      },
       {
-      find: '@images',
-      replacement: 'frontend/images'
-     },
+        find: '@layouts',
+        replacement: 'frontend/layouts',
+      },
       {
-      find: '@types',
-      replacement: 'frontend/types'
-     }
-    ]
+        find: '@images',
+        replacement: 'frontend/images',
+      },
+      {
+        find: '@types',
+        replacement: 'frontend/types',
+      },
+    ],
   },
-  clearScreen: false
-})
+  clearScreen: false,
+});

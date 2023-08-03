@@ -4,9 +4,8 @@ import { Navigate, Route, Routes } from 'react-router';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomeLayout />}>
-      </Route>
-      <Route path="*" element={<Navigate to="/" replace />}></Route>
+      <Route path="/" element={ <HomeLayout /> } />
+      <Route path="*" element={ <Navigate to="/" replace /> } />
     </Routes>
   );
 };
