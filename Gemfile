@@ -90,6 +90,6 @@ gem 'vite_rails', '~> 3.0'
 
 gem 'devise', '~> 4.9'
 
-gem "bundler-audit", "~> 0.9.1"
+gem 'bundler-audit', '~> 0.9.1'
 
-gem "brakeman", "~> 6.0"
+gem 'brakeman', '~> 6.0'
