@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<div class="flex flex-col justify-center object-center h-full bg-gray-100 w-full py-16 px-4">
+    <div class="flex flex-col items-center justify-center">
+       <%= image_tag "expenzen-icon.svg", class:"w-14 mb-4" %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+       <h2 class="font-bold text-slate-950 text-2xl">Sign in to your account</h2>
+        <div class="bg-white shadow rounded-lg 2xl:w-1/4 lg:w-1/3 md:w-1/2 w-full p-12 mt-16">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= render "devise/shared/flash_error" %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                <div>
+                  <%= f.label :email, 'Email address', class:"text-sm font-medium leading-none text-gray-800" %><br />
+                  <div class="mt-2">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'example@example.com' ,class:"p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+                  </div>
+                </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                <div class="mt-6">
+                  <%= f.label :password, class:"text-sm font-medium leading-none text-gray-800"  %><br />
+                   <div class="mt-2">
+                     <%= f.password_field :password, autocomplete: "current-password", placeholder: '******', class:"p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+                  </div>
+                </div>
+
+                <div class=" flex justify-between mt-6">
+                  <div class="remember-me-field">
+                    <%= f.check_box :remember_me, class: "rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" %>
+                    <%= f.label :remember_me, class: "text-sm ml-2" %>
+                  </div>
+                  <div class="forgot-password-field">
+                    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                      <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-sm text-indigo-600 font-semibold" %>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="actions mt-6">
+                  <%= f.submit "Sign in", class:"focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded-md hover:bg-indigo-600 py-3 w-full" %>
+                </div>
+              <% end %>
+        </div>
+
+        <div class="text-gray-500 text-sm mt-10">
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              Not a member? <%= link_to "Let's create a one!", new_registration_path(resource_name), class: "text-indigo-600 font-semibold" %>
+            <% end %>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

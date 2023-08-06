@@ -5,5 +5,10 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './frontend/**/*.{js,ts,tsx,tsx}',
   ],
+  theme: {
+    fontFamily: {
+      sans: ["Inter"],
+    },
+  },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
