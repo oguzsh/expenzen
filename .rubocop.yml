@@ -35,6 +35,9 @@ Layout/EndOfLine:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false
+
 Layout/FirstArrayElementLineBreak:
   Exclude:
     - config/application.rb
