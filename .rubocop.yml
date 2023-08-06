@@ -17,6 +17,24 @@ AllCops:
 Bundler/OrderedGems:
   ConsiderPunctuation: true
 
+Style/Documentation:
+  Enabled: false
+
+GraphQL/ObjectDescription:
+  Enabled: false
+
+GraphQL/MaxDepthSchema:
+  Enabled: false
+
+GraphQL/MaxComplexitySchema:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
 Layout/FirstArrayElementLineBreak:
   Exclude:
     - config/application.rb
