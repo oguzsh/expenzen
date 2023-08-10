@@ -1,0 +1,28 @@
+type Account {
+  accountType: String!
+  balance: Int!
+  createdAt: ISO8601DateTime!
+  id: ID!
+  name: String!
+  updatedAt: ISO8601DateTime!
+  userId: Int!
+}
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+type Query {
+  """
+  All financial accounts
+  """
+  accounts: [Account!]!
+}

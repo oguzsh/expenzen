@@ -17,6 +17,9 @@ AllCops:
 Bundler/OrderedGems:
   ConsiderPunctuation: true
 
+GraphQL/FieldDescription:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
