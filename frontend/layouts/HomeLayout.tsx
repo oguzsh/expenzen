@@ -1,5 +1,6 @@
 import { Card } from 'components/Card';
 import { Sidebar } from 'components/Sidebar';
+import { AccountsContainer } from 'modules/accounts/AccountsContainer';
 
 const HomeLayout = () => {
   return (
@@ -24,9 +25,7 @@ const HomeLayout = () => {
               </Card>
             </div>
             <div className="flex flex-col items-center h-full">
-              <Card>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Total balance</h5>
-              </Card>
+              <AccountsContainer />
             </div>
           </div>
         </div>
