@@ -1,14 +1,16 @@
+import React from 'react';
 import AppRouter from 'AppRouter';
 import { BrowserRouter } from 'react-router-dom';
-
-import React from 'react';
+import { GraphqlProvider } from 'GraphqlProvider';
 
 const App = () => {
   return (
     <React.StrictMode>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
+      <GraphqlProvider>
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </GraphqlProvider>
     </React.StrictMode>
   );
 };
