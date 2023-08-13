@@ -2,5 +2,6 @@
 *.config.ts
 *.config.js
 *.d.ts
+codegen.ts
 
 **/jest.setup.ts
