@@ -1,7 +1,7 @@
-import { useAllAccountsQuery } from '../queries/__generated__/index.generated';
+import { useAllAccounts } from '../queries/__generated__/index.gql';
 
 export const useAccounts = () => {
-  const { data, loading, error } = useAllAccountsQuery();
+  const { data, loading, error } = useAllAccounts();
 
   const accounts = data?.accounts;
 

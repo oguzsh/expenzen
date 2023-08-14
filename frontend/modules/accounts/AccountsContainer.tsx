@@ -8,7 +8,7 @@ export const AccountsContainer = () => {
   if (loading) return <Loading />;
   if (error) {
     // TODO: Use ErrorBoundary
-    console.log(error);
+    throw error;
   }
 
   return <AccountList accounts={ accounts } />;
