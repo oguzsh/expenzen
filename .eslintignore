@@ -5,3 +5,5 @@
 codegen.ts
 
 **/jest.setup.ts
+
+frontend/graphql/__generated__
