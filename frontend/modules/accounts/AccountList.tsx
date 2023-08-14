@@ -1,6 +1,5 @@
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue } from '@nextui-org/react';
-import { Loading } from 'components/Loading';
-import { Account } from 'graphql/types';
+import { Account } from 'graphql/__generated__/types';
 import { startCase, camelCase } from 'lodash';
 import { useMemo } from 'react';
 

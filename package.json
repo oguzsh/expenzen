@@ -34,13 +34,17 @@
     "eslint": "eslint --color --ext .js,.jsx,.ts,.tsx,.graphql",
     "eslint-fix": "eslint --color --fix --ext .js,.jsx,.ts,.tsx,.graphql",
     "tsc": "tsc",
-    "gql:codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "yarn codegen:clean && yarn codegen:graphql_codegen",
+    "codegen:clean": "find frontend -type d -name __generated__ -print0 | xargs -0 rm -rf && mkdir -p frontend/graphql/__generated__",
+    "codegen:graphql_codegen": "yarn graphql-codegen --config codegen.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-codegen/fragment-matcher": "^5.0.0",
     "@graphql-codegen/near-operation-file-preset": "^2.5.0",
+    "@graphql-codegen/typescript-apollo-client-helpers": "^2.2.6",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@swc/core": "^1.3.72",

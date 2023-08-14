@@ -13,7 +13,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   /** An ISO 8601-encoded datetime */
-  ISO8601DateTime: { input: any; output: any; }
+  ISO8601DateTime: { input: string; output: string; }
 };
 
 export type Account = {
