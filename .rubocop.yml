@@ -20,6 +20,9 @@ Bundler/OrderedGems:
 GraphQL/FieldDescription:
   Enabled: false
 
+GraphQL/ArgumentDescription:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
