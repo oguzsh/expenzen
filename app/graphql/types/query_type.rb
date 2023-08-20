@@ -11,7 +11,7 @@ module Types
 
     field :accounts, [Types::AccountType], 'All financial accounts', null: false
     def accounts
-      Account.all # TODO: Add pagination
+      ::AccountService.accounts(user_id: context[:current_user].id)
     end
   end
 end

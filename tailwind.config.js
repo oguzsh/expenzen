@@ -14,5 +14,5 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui(), require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [nextui()],
 };
