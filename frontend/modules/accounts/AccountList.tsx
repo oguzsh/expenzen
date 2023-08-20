@@ -1,7 +1,8 @@
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue } from '@nextui-org/react';
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Button } from '@nextui-org/react';
 import { Account } from 'graphql/__generated__/types';
 import { startCase, camelCase } from 'lodash';
 import { useMemo } from 'react';
+import { CreateAccountModal } from './components/modals/CreateAccountModal';
 
 type AccountListProps = {
   accounts: Omit<Account, 'createdAt' | 'updatedAt' | 'userId'>[] | undefined
@@ -10,6 +11,11 @@ type AccountListProps = {
 export const AccountList = ({ accounts }: AccountListProps) => {
   const columnStructure = useMemo(() => Object.keys(accounts?.[0] || {}).map(key => startCase(key)).splice(2), [accounts]);
   const columns = columnStructure.map(column => <TableColumn key={ column }>{ column }</TableColumn>);
+
+  const bottomContent = useMemo(() => {
+    return <CreateAccountModal />;
+  }, []);
+
 
   const rows = useMemo(() => accounts?.map((account) => {
     return (
@@ -20,7 +26,10 @@ export const AccountList = ({ accounts }: AccountListProps) => {
   }), [accounts]);
 
   return (
-    <Table aria-label="Account list">
+    <Table aria-label="Account list"
+      bottomContent={ bottomContent }
+      bottomContentPlacement="inside"
+    >
       <TableHeader>
         { columns }
       </TableHeader>

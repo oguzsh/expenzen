@@ -1,6 +1,7 @@
 import { AccountList } from './AccountList';
 import { Loading } from 'components/Loading';
 import { useAccounts } from './hooks/useAccounts';
+import { EmptyTable } from 'components/EmptyTable';
 
 export const AccountsContainer = () => {
   const { accounts, loading, error } = useAccounts();
@@ -11,5 +12,12 @@ export const AccountsContainer = () => {
     throw error;
   }
 
-  return <AccountList accounts={ accounts } />;
+  if (!accounts?.length) {
+    return <EmptyTable name='accounts' />;
+  }
+
+  // TODO: Do not use .slice and integrate GQL Pagination
+  return <>
+    <AccountList accounts={ accounts.slice(0, 10) } />
+  </>;
 };
