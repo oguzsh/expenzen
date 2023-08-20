@@ -24,9 +24,18 @@ export type AccountFieldPolicy = {
   updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
   userId?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type MutationKeySpecifier = ('testField' | MutationKeySpecifier)[];
+export type CreateAccountPayloadKeySpecifier = (
+  | 'account'
+  | 'clientMutationId'
+  | CreateAccountPayloadKeySpecifier
+)[];
+export type CreateAccountPayloadFieldPolicy = {
+  account?: FieldPolicy<any> | FieldReadFunction<any>;
+  clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MutationKeySpecifier = ('createAccount' | MutationKeySpecifier)[];
 export type MutationFieldPolicy = {
-  testField?: FieldPolicy<any> | FieldReadFunction<any>;
+  createAccount?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type QueryKeySpecifier = ('accounts' | QueryKeySpecifier)[];
 export type QueryFieldPolicy = {
@@ -39,6 +48,13 @@ export type StrictTypedTypePolicies = {
       | AccountKeySpecifier
       | (() => undefined | AccountKeySpecifier);
     fields?: AccountFieldPolicy;
+  };
+  CreateAccountPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+    keyFields?:
+      | false
+      | CreateAccountPayloadKeySpecifier
+      | (() => undefined | CreateAccountPayloadKeySpecifier);
+    fields?: CreateAccountPayloadFieldPolicy;
   };
   Mutation?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
     keyFields?:
