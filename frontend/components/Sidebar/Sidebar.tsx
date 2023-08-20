@@ -4,12 +4,12 @@ import { useMemo } from 'react';
 
 const links = [{
   title: 'Overview',
-  url: '#',
+  url: '/',
   icon: null
 },
 {
   title: 'Accounts',
-  url: '#',
+  url: 'accounts',
   icon: null
 },
 {
