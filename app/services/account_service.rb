@@ -11,21 +11,19 @@ class AccountService
     raise GraphQL::ExecutionError, error.message
   end
 
-  def self.update_account(account_id:, name: nil, balance: nil, account_type: nil, user_id: nil)
-    account = Account.find(account_id)
-    account.update!(
-      name: name || account.name,
-      balance: balance || account.balance,
-      account_type: account_type || account.account_type,
-      user_id: user_id || account.user_id
-    )
+  def self.update_account(attributes)
+    Account.find(attributes[:id]).tap do |account|
+      account.update!(attributes)
+    end
   rescue ActiveRecord::RecordNotFound
     raise GraphQL::ExecutionError, 'Account not found!'
   rescue ActiveRecord::RecordInvalid => error
     raise GraphQL::ExecutionError, error.message
   end
 
-  def self.remove_account(account_id:)
-    Account.destroy(account_id)
+  def self.delete_account(account_id:)
+    Account.find(account_id).destroy
+  rescue ActiveRecord::RecordNotFound
+    raise GraphQL::ExecutionError, 'Account not found!'
   end
 end
