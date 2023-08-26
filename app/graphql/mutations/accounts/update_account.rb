@@ -3,9 +3,9 @@
 module Mutations
   module Accounts
     class UpdateAccount < Mutations::BaseMutation
-      argument :id, Integer, required: true
       argument :account_type, String, required: false
       argument :balance, Float, required: false
+      argument :id, Integer, required: true
       argument :name, String, required: false
 
       type Types::AccountType
