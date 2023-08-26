@@ -1,0 +1,28 @@
+class TransactionService < BaseService
+  def transactions_by_user(user_id:)
+    Transaction.where(user_id: user_id) # TODO: Add pagination
+  end
+
+  def transactions_by_category(user_id:, category_id:)
+    Transaction.where(user_id: user_id, category_id: category_id) # TODO: Add pagination
+  end
+
+  def create_transaction(params)
+    Transaction.find_or_create_by!(params)
+  rescue ActiveRecord::RecordInvalid => error
+    raise_error(message: error.message)
+  end
+
+  def update_transaction(attributes)
+    transaction = find_record(model: Transaction, id: attributes[:id])
+    transaction.update!(attributes)
+    transaction
+  rescue ActiveRecord::RecordInvalid => error
+    raise_error(message: error.message)
+  end
+
+  def delete_transaction(id:)
+    transaction = find_record(model: Transaction, id: id)
+    transaction.destroy
+  end
+end
