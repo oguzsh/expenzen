@@ -14,10 +14,15 @@
 #
 # Indexes
 #
-#  index_accounts_on_user_id  (user_id)
+#  index_accounts_on_name_and_user_id  (name,user_id) UNIQUE
+#  index_accounts_on_user_id           (user_id)
 #
 class Account < ApplicationRecord
   belongs_to :user
 
   has_many :transactions, dependent: :destroy
+
+  validates :account_type, presence: true
+  validates :name, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
+  validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end

@@ -12,7 +12,8 @@
 #
 # Indexes
 #
-#  index_accounts_on_user_id  (user_id)
+#  index_accounts_on_name_and_user_id  (name,user_id) UNIQUE
+#  index_accounts_on_user_id           (user_id)
 #
 FactoryBot.define do
   factory :account do
