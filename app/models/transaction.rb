@@ -11,13 +11,16 @@
 #  updated_at       :datetime         not null
 #  account_id       :bigint           not null
 #  category_id      :bigint           not null
+#  user_id          :bigint           not null
 #
 # Indexes
 #
 #  index_transactions_on_account_id   (account_id)
 #  index_transactions_on_category_id  (category_id)
+#  index_transactions_on_user_id      (user_id)
 #
 class Transaction < ApplicationRecord
+  belongs_to :user
   belongs_to :account
   belongs_to :category
 
@@ -25,6 +28,7 @@ class Transaction < ApplicationRecord
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :transaction_date, presence: true
+  validates :user, presence: true
   validates :account, presence: true
   validates :category, presence: true
 

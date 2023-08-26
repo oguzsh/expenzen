@@ -23,6 +23,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :accounts, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: { case_sensitive: true }
 end
