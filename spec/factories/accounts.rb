@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: accounts
@@ -17,12 +15,13 @@
 #  index_accounts_on_name_and_user_id  (name,user_id) UNIQUE
 #  index_accounts_on_user_id           (user_id)
 #
-class Account < ApplicationRecord
-  belongs_to :user
-
-  has_many :transactions, dependent: :destroy
-
-  validates :account_type, presence: true
-  validates :name, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
-  validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
+FactoryBot.define do
+  factory :account do
+    user
+    name { Faker::Bank.name }
+    account_type { 'TestType' }
+    balance { 1000.0 }
+    created_at { Time.zone.now }
+    updated_at { Time.zone.now }
+  end
 end
