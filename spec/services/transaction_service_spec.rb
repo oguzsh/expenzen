@@ -6,7 +6,7 @@ RSpec.describe TransactionService do
     let!(:transactions) { create_list(:transaction, 3, user: user) }
 
     it 'returns transactions for a given user' do
-      result = described_class.new.transactions_by_user(user_id: user.id)
+      result = described_class.transactions_by_user(user_id: user.id)
       expect(result).to match_array(transactions)
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe TransactionService do
     let!(:transactions) { create_list(:transaction, 3, user: user, category: category) }
 
     it 'returns transactions for a given user and category' do
-      result = described_class.new.transactions_by_category(user_id: user.id, category_id: category.id)
+      result = described_class.transactions_by_category(user_id: user.id, category_id: category.id)
       expect(result).to match_array(transactions)
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe TransactionService do
     let(:params) { { amount: 100.5, transaction_date: Time.zone.now, note: 'Test', transaction_type: 'income', account: account, category: category, user: create(:user) } }
 
     it 'creates a transaction' do
-      expect { described_class.new.create_transaction(params) }.to change(Transaction, :count).by(1)
+      expect { described_class.create_transaction(params) }.to change(Transaction, :count).by(1)
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe TransactionService do
     let(:new_amount) { 200.5 }
 
     it 'updates the transaction attributes' do
-      described_class.new.update_transaction(id: transaction.id, amount: new_amount)
+      described_class.update_transaction(id: transaction.id, amount: new_amount)
       expect(transaction.reload.amount).to eq(new_amount)
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe TransactionService do
     let!(:transaction) { create(:transaction) }
 
     it 'deletes a transaction' do
-      expect { described_class.new.delete_transaction(id: transaction.id) }.to change(Transaction, :count).by(-1)
+      expect { described_class.delete_transaction(id: transaction.id) }.to change(Transaction, :count).by(-1)
     end
   end
 end
