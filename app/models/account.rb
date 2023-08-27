@@ -6,7 +6,7 @@
 #
 #  id           :bigint           not null, primary key
 #  account_type :string           not null
-#  balance      :integer          not null
+#  balance      :float            not null
 #  name         :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

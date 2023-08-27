@@ -5,8 +5,8 @@ class AccountService < BaseService
     Account.where(user_id: user_id) # TODO: Add pagination
   end
 
-  def self.create_account(name:, balance:, account_type:, user_id:)
-    Account.find_or_create_by!(name: name, balance: balance, account_type: account_type, user_id: user_id)
+  def self.create_account(params)
+    Account.find_or_create_by!(params)
   rescue ActiveRecord::RecordInvalid => error
     raise_error(message: error.message)
   end
