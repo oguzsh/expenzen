@@ -1,0 +1,18 @@
+databases:
+  - name: expen_zen
+    databaseName: expen_zen_production
+    user: expen_zen
+
+services:
+  - type: web
+    name: expen_zen
+    runtime: ruby
+    buildCommand: './bin/render-build.sh'
+    startCommand: 'bundle exec puma -C config/puma.rb'
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: expen_zen_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
