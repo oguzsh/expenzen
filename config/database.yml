@@ -83,5 +83,3 @@ production:
   <<: *default
   database: expen_zen_production
   url: <%= ENV['DATABASE_URL'] %>
-  username: expen_zen
-  password: <%= ENV["EXPEN_ZEN_DATABASE_PASSWORD"] %>
