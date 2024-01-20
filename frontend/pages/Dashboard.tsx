@@ -1,19 +1,14 @@
-import { Card } from 'components/Card';
-import { AccountsContainer } from 'modules/accounts/AccountsContainer';
+import { useUserData } from 'pages/__generated__/Dashboard.gql';
+
 import BaseLayout from '../layouts/BaseLayout';
 
 const Dashboard = () => {
-  return (
-    <BaseLayout>
-      <div className="p-4">
-        <div className="flex flex-wrap justify-evenly gap-4 h-full">
-          <div className="flex flex-col items-center h-full">
-            <AccountsContainer />
-          </div>
-        </div>
-      </div>
-    </BaseLayout>
-  );
+  const { data, loading, error } = useUserData();
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  return <BaseLayout user={data?.user}>test</BaseLayout>;
 };
 
 export default Dashboard;

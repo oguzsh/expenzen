@@ -1,0 +1,6 @@
+# import ../components/Profile/Profile.graphql
+
+fragment HeaderUserData on User {
+  id
+  ...ProfileUserData
+}

@@ -1,0 +1,4 @@
+fragment ProfileUserData on User {
+  id
+  firstName
+}

@@ -4,12 +4,12 @@
   "dependencies": {
     "@apollo/client": "^3.8.1",
     "@hotwired/turbo-rails": "^7.3.0",
-    "@nextui-org/react": "^2.0.18",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@tailwindcss/forms": "^0.5.4",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.14",
     "classnames": "^2.3.2",
+    "daisyui": "^4.6.0",
     "esbuild": "^0.18.17",
     "formik": "^2.4.3",
     "framer-motion": "^10.15.1",
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "esbuild ./frontend/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "tailwindcss --postcss -i ./frontend/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
+    "build:css": "tailwindcss --postcss -i ./frontend/stylesheets/application.css -o ./app/assets/builds/application.css",
     "prettier": "prettier -w .prettierrc",
     "eslint": "eslint --color --ext .js,.jsx,.ts,.tsx,.graphql",
     "eslint-fix": "eslint --color --fix --ext .js,.jsx,.ts,.tsx,.graphql",

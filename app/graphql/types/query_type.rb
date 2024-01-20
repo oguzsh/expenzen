@@ -13,6 +13,12 @@ module Types
 
     field :transactions, [Types::TransactionType], 'All transaction data', null: false
 
+    field :user, Types::UserType, 'All user details', null: false
+
+    def user
+      current_user
+    end
+
     def accounts
       ::AccountService.accounts(user_id: context[:current_user].id)
     end

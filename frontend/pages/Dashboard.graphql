@@ -1,0 +1,8 @@
+# import ../layouts/BaseLayout/BaseLayout.graphql
+
+query UserData {
+  user {
+    id
+    ...BaseLayoutUserData
+  }
+}

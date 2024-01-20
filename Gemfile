@@ -99,3 +99,5 @@ gem 'bundler-audit', '~> 0.9.1'
 gem 'brakeman', '~> 6.0'
 
 gem 'pry', '~> 0.14.2'
+
+gem "money-rails", "~> 1.15"

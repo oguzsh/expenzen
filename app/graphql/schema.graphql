@@ -184,6 +184,16 @@ type Query {
   All financial accounts
   """
   accounts: [Account!]!
+
+  """
+  All transaction data
+  """
+  transactions: [Transaction!]!
+
+  """
+  All user details
+  """
+  user: User!
 }
 
 type Transaction {
@@ -239,4 +249,15 @@ input UpdateTransactionInput {
   note: String
   transactionDate: ISO8601Date
   transactionType: TransactionTypeEnum
+}
+
+type User {
+  createdAt: ISO8601DateTime!
+  email: String!
+  firstName: String!
+  fullName: String!
+  fullNameWithMiddle: String!
+  id: ID!
+  lastName: String!
+  updatedAt: ISO8601DateTime!
 }

@@ -1,10 +1,14 @@
 require 'faker'
 
 2.times do |n|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  middle_name = Faker::Name.middle_name
+
   email = "example-#{n + 1}@gmail.org"
   password = 'password'
 
-  User.create!({ email: email, password: password, password_confirmation: password })
+  User.create!({first_name: first_name, last_name: last_name, middle_name: middle_name, email: email, password: password, password_confirmation: password })
 end
 
 # Create Categories

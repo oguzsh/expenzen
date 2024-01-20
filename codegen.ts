@@ -19,6 +19,7 @@ const nearOperationPresetCommon = {
     },
     experimentalFragmentVariables: true,
     inlineFragmentType: 'combine',
+    namingConvention: 'keep',
     omitOperationSuffix: true,
   },
 };
@@ -56,7 +57,7 @@ const config: CodegenConfig = {
       hooks: {
         afterOneFileWrite: ['yarn prettier --write'],
       },
-      documents: ['frontend/**/*.{ts,tsx,js,jsx}', ...excludedFiles],
+      documents: ['frontend/**/*.{ts,tsx,js,jsx,graphql}', ...excludedFiles],
     },
     'frontend/graphql/__generated__/apolloClientOptions.ts': {
       plugins: ['fragment-matcher'],

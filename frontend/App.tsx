@@ -1,17 +1,15 @@
-import React from 'react';
 import AppRouter from 'AppRouter';
-import { BrowserRouter } from 'react-router-dom';
 import { GraphqlProvider } from 'GraphqlProvider';
-import { NextUIProvider } from '@nextui-org/react';
+import { BrowserRouter } from 'react-router-dom';
+
+import React from 'react';
 
 const App = () => {
   return (
     <React.StrictMode>
       <GraphqlProvider>
         <BrowserRouter>
-          <NextUIProvider>
-            <AppRouter />
-          </NextUIProvider>
+          <AppRouter />
         </BrowserRouter>
       </GraphqlProvider>
     </React.StrictMode>

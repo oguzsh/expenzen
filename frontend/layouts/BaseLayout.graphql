@@ -1,0 +1,6 @@
+# import ../components/Header/header.graphql
+
+fragment BaseLayoutUserData on User {
+  id
+  ...HeaderUserData
+}
