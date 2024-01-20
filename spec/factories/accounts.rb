@@ -18,7 +18,7 @@
 FactoryBot.define do
   factory :account do
     user
-    name { Faker::Bank.name }
+    name { Faker::Bank.unique.name }
     account_type { 'TestType' }
     balance { 1000.0 }
     created_at { Time.zone.now }

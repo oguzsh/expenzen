@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_165603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,7 +64,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
     t.string "description", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,4 +88,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
   add_foreign_key "expenses", "categories"
   add_foreign_key "incomes", "accounts"
   add_foreign_key "incomes", "categories"
+  add_foreign_key "transactions", "users"
 end
