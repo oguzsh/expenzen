@@ -29,17 +29,13 @@ User.all.each do |user|
 end
 
 # Create Transactions for Accounts
-Account.all.each do |account|
-  4.times do
-    Transaction.create!(
-      account: account,
-      user: account.user,
-      category: Category.all.sample,
-      transaction_date: Faker::Date.between(from: 30.days.ago, to: Time.zone.now),
-      amount: Faker::Commerce.price(range: 1.0..1000.0),
-      transaction_type: %w[income expense].sample
-    )
-  end
-end
+# Account.all.each do |account|
+#   4.times do
+#     Transaction.create!(
+#       transaction_date: Faker::Date.between(from: 30.days.ago, to: Time.zone.now),
+#       amount: Faker::Commerce.price(range: 1.0..1000.0),
+#     )
+#   end
+# end
 
 puts 'Seeding complete!'

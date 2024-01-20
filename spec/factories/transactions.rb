@@ -2,22 +2,20 @@
 #
 # Table name: transactions
 #
-#  id               :bigint           not null, primary key
-#  amount           :float            not null
-#  note             :text
-#  transaction_date :datetime         not null
-#  transaction_type :integer          default("income"), not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  account_id       :bigint           not null
-#  category_id      :bigint           not null
-#  user_id          :bigint           not null
+#  id                :bigint           not null, primary key
+#  amount            :decimal(10, 2)   not null
+#  description       :string(255)
+#  transactable_type :string           not null
+#  transaction_date  :datetime         not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  transactable_id   :bigint           not null
+#  user_id           :bigint           not null
 #
 # Indexes
 #
-#  index_transactions_on_account_id   (account_id)
-#  index_transactions_on_category_id  (category_id)
-#  index_transactions_on_user_id      (user_id)
+#  index_transactions_on_transactable  (transactable_type,transactable_id)
+#  index_transactions_on_user_id       (user_id)
 #
 FactoryBot.define do
   factory :transaction do

@@ -33,17 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_174037) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.float "amount", null: false
-    t.integer "transaction_type", default: 0, null: false
+    t.string "transactable_type", null: false
+    t.bigint "transactable_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
     t.datetime "transaction_date", null: false
-    t.text "note"
-    t.bigint "category_id", null: false
-    t.bigint "account_id", null: false
+    t.string "description", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
-    t.index ["category_id"], name: "index_transactions_on_category_id"
+    t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
