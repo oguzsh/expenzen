@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_12_174037) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_153414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_174037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.boolean "is_recurring", default: false
+    t.integer "recurring_period", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_expenses_on_account_id"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.boolean "is_recurring", default: false
+    t.integer "recurring_period", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_incomes_on_account_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -60,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_174037) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expenses", "accounts"
+  add_foreign_key "incomes", "accounts"
 end
