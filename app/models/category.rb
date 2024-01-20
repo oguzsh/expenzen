@@ -12,7 +12,8 @@
 #  index_categories_on_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
-  has_many :transactions, dependent: :destroy
+  has_many :incomes
+  has_many :expenses
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }
 end
