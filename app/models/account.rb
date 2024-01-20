@@ -19,8 +19,11 @@
 #
 class Account < ApplicationRecord
   belongs_to :user
+  has_many :incomes, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
-  validates :account_type, presence: true
-  validates :name, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
-  validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :account_type, :balance, :name, :user_id, presence: true
+
+  validates :name, uniqueness: { scope: :user_id }
+  validates :balance, numericality: { greater_than_or_equal_to: 0 }
 end

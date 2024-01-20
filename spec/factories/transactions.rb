@@ -10,12 +10,10 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  transactable_id   :bigint           not null
-#  user_id           :bigint           not null
 #
 # Indexes
 #
 #  index_transactions_on_transactable  (transactable_type,transactable_id)
-#  index_transactions_on_user_id       (user_id)
 #
 FactoryBot.define do
   factory :transaction do

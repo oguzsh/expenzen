@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
     t.bigint "account_id", null: false
     t.boolean "is_recurring", default: false
     t.integer "recurring_period", default: 0
+    t.datetime "expense_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
@@ -47,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
     t.bigint "account_id", null: false
     t.boolean "is_recurring", default: false
     t.integer "recurring_period", default: 0
+    t.datetime "income_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
@@ -62,9 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_155051) do
     t.string "description", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -3,6 +3,7 @@
 # Table name: incomes
 #
 #  id               :bigint           not null, primary key
+#  income_date      :datetime         not null
 #  is_recurring     :boolean          default(FALSE)
 #  recurring_period :integer          default("not_recurring")
 #  created_at       :datetime         not null
@@ -26,7 +27,7 @@ class Income < ApplicationRecord
   belongs_to :account
   belongs_to :category
 
-  has_many :transactions, as: transactable, dependent: :destory
+  has_many :transactions, as: :transactable, dependent: :destroy
 
   validates :income_date, presence: true
 end
