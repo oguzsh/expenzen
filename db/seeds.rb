@@ -10,9 +10,8 @@ User.destroy_all
   email = "example-#{n + 1}@gmail.org"
   password = 'password'
 
-  User.create!({first_name: first_name, last_name: last_name, middle_name: middle_name, email: email, password: password, password_confirmation: password })
+  User.create!({ first_name: first_name, last_name: last_name, middle_name: middle_name, email: email, password: password, password_confirmation: password })
 end
-
 
 # Clear existing categories
 Category.destroy_all
@@ -20,7 +19,6 @@ Category.destroy_all
 12.times do
   Category.create!(name: Faker::Commerce.unique.department)
 end
-
 
 # Clear existing accounts
 Account.destroy_all
@@ -41,26 +39,24 @@ Income.destroy_all
 Expense.destroy_all
 Transaction.destroy_all
 
-12.times do
-  Income.create!(
+20.times do
+  income = Income.create!(
     recurring_period: Income.recurring_periods.keys.sample,
     category: Category.all.sample,
     income_date: Faker::Date.backward(days: 30),
-    account: Account.first
+    account: Account.first,
+    user: User.all.sample
   )
-end
 
-12.times do
-  Expense.create!(
-    recurring_period: Income.recurring_periods.keys.sample,
+  expense = Expense.create!(
+    recurring_period: Expense.recurring_periods.keys.sample,
     category: Category.all.sample,
     expense_date: Faker::Date.backward(days: 30),
-    account: Account.first
+    account: Account.first,
+    user: User.all.sample
   )
-end
 
-20.times do
-  transactable = [Income, Expense].sample.last # Randomly select Income or Expense
+  transactable = [income, expense].sample # Randomly select Income or Expense
   Transaction.create!(
     transaction_date: Faker::Date.backward(days: 30),
     amount: Faker::Number.decimal(l_digits: 3, r_digits: 2),
