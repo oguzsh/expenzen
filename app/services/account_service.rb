@@ -6,7 +6,7 @@ class AccountService < BaseService
   end
 
   def self.total_balance(user_id:)
-    Account.where(user_id: user_id).sum(&:balance)
+    Account.where(user_id: user_id).total_balance
   end
 
   def self.create_account(params)

@@ -9,6 +9,14 @@ class IncomeService < BaseService
     User.find_by(id: user_id).incomes.sum(&:total)
   end
 
+  def self.by_month(user_id:, month:)
+    Income.where(user_id: user_id).by_month(month)
+  end
+
+  def self.by_month_total(user_id:, month:)
+    Income.where(user_id: user_id).by_month(month).sum(&:total)
+  end
+
   def self.create_income(params)
     Income.find_or_create_by!(params)
   rescue ActiveRecord::RecordInvalid => error

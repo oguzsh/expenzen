@@ -9,6 +9,14 @@ class ExpenseService < BaseService
     User.find_by(id: user_id).expenses.sum(&:total)
   end
 
+  def self.by_month(user_id:, month:)
+    Expense.where(user_id: user_id).by_month(month)
+  end
+
+  def self.by_month_total(user_id:, month:)
+    Expense.where(user_id: user_id).by_month(month).sum(&:total)
+  end
+
   def self.create_expense(params)
     Expense.find_or_create_by!(params)
   rescue ActiveRecord::RecordInvalid => error
