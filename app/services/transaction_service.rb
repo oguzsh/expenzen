@@ -3,6 +3,10 @@ class TransactionService < BaseService
     Transaction.where(user_id: user_id) # TODO: Add pagination
   end
 
+  def self.recent_transactions(user_id:)
+    Transaction.where(user_id: user_id).recent_transactions
+  end
+
   def self.create_transaction(params)
     Transaction.find_or_create_by!(params)
   rescue ActiveRecord::RecordInvalid => error
