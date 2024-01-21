@@ -5,6 +5,10 @@ class AccountService < BaseService
     Account.where(user_id: user_id) # TODO: Add pagination
   end
 
+  def self.total_balance(user_id:)
+    Account.where(user_id: user_id).sum(&:balance)
+  end
+
   def self.create_account(params)
     Account.find_or_create_by!(params)
   rescue ActiveRecord::RecordInvalid => error

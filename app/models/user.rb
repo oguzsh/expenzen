@@ -27,6 +27,8 @@ class User < ApplicationRecord
 
   has_many :accounts, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_many :incomes, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
   validates :email, presence: true, uniqueness: { case_sensitive: true }
   validates :email, length: { maximum: 255 }
