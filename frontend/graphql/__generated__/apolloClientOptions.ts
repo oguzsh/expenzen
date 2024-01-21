@@ -1,7 +1,11 @@
 export type PossibleTypesResultData = {
-  possibleTypes: {};
+  possibleTypes: {
+    Transactable: ['Expense', 'Income'];
+  };
 };
 const result: PossibleTypesResultData = {
-  possibleTypes: {},
+  possibleTypes: {
+    Transactable: ['Expense', 'Income'],
+  },
 };
 export default result;

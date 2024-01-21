@@ -78,6 +78,34 @@ type Expense {
   user: User!
 }
 
+type FinancialSummary {
+  """
+  Total balance of accounts
+  """
+  totalBalance: Float!
+
+  """
+  Total of expenses
+  """
+  totalExpenses: Float!
+
+  """
+  Total of incomes
+  """
+  totalIncomes: Float!
+
+  """
+  Total of savings
+  """
+  totalSavings: Float!
+
+  """
+  Total savings of current month
+  """
+  totalSavingsByCurrentMonth: Float!
+  userId: Int!
+}
+
 """
 An ISO 8601-encoded datetime
 """
@@ -138,6 +166,11 @@ type Query {
   expenses: [Expense!]!
 
   """
+  Summary of user's financial data like total income
+  """
+  financialSummary: FinancialSummary
+
+  """
   All incomes
   """
   incomes: [Income!]!
@@ -146,21 +179,6 @@ type Query {
   Recent transactions data
   """
   recentTransactions: [Transaction!]
-
-  """
-  Total balance of accounts
-  """
-  totalBalance: Float!
-
-  """
-  Total of expenses
-  """
-  totalExpenses: Float!
-
-  """
-  Total of incomes
-  """
-  totalIncomes: Float!
 
   """
   All user details
