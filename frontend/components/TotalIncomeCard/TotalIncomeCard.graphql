@@ -1,0 +1,3 @@
+fragment TotalIncomeCardFinancialSummary on FinancialSummary {
+  totalIncomes
+}
