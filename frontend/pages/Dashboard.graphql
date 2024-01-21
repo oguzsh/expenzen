@@ -1,8 +1,13 @@
 # import ../layouts/BaseLayout/BaseLayout.graphql
+# import ../components/TotalBalanceCard/TotalBalanceCard.graphql
 
-query UserData {
+query DashboardData {
   user {
     id
     ...BaseLayoutUserData
+  }
+  financialSummary {
+    ...TotalBalanceCardFinancialSummary
+    ...TotalIncomeCardFinancialSummary
   }
 }
