@@ -26,4 +26,8 @@ class Account < ApplicationRecord
 
   validates :name, uniqueness: { scope: :user_id }
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
+
+  def self.total_balance
+    sum(:balance)
+  end
 end

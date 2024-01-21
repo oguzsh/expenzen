@@ -55,63 +55,109 @@ export type DeleteAccountPayloadFieldPolicy = {
   errors?: FieldPolicy<any> | FieldReadFunction<any>;
   success?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type DeleteTransactionPayloadKeySpecifier = (
-  | 'clientMutationId'
-  | 'errors'
-  | 'success'
-  | DeleteTransactionPayloadKeySpecifier
+export type ExpenseKeySpecifier = (
+  | 'account'
+  | 'category'
+  | 'expenseDate'
+  | 'id'
+  | 'isRecurring'
+  | 'recurringPeriod'
+  | 'transactions'
+  | 'user'
+  | ExpenseKeySpecifier
 )[];
-export type DeleteTransactionPayloadFieldPolicy = {
-  clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
-  errors?: FieldPolicy<any> | FieldReadFunction<any>;
-  success?: FieldPolicy<any> | FieldReadFunction<any>;
+export type ExpenseFieldPolicy = {
+  account?: FieldPolicy<any> | FieldReadFunction<any>;
+  category?: FieldPolicy<any> | FieldReadFunction<any>;
+  expenseDate?: FieldPolicy<any> | FieldReadFunction<any>;
+  id?: FieldPolicy<any> | FieldReadFunction<any>;
+  isRecurring?: FieldPolicy<any> | FieldReadFunction<any>;
+  recurringPeriod?: FieldPolicy<any> | FieldReadFunction<any>;
+  transactions?: FieldPolicy<any> | FieldReadFunction<any>;
+  user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type FinancialSummaryKeySpecifier = (
+  | 'totalBalance'
+  | 'totalExpenses'
+  | 'totalIncomes'
+  | 'totalSavings'
+  | 'totalSavingsByCurrentMonth'
+  | 'userId'
+  | FinancialSummaryKeySpecifier
+)[];
+export type FinancialSummaryFieldPolicy = {
+  totalBalance?: FieldPolicy<any> | FieldReadFunction<any>;
+  totalExpenses?: FieldPolicy<any> | FieldReadFunction<any>;
+  totalIncomes?: FieldPolicy<any> | FieldReadFunction<any>;
+  totalSavings?: FieldPolicy<any> | FieldReadFunction<any>;
+  totalSavingsByCurrentMonth?: FieldPolicy<any> | FieldReadFunction<any>;
+  userId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type IncomeKeySpecifier = (
+  | 'account'
+  | 'category'
+  | 'id'
+  | 'incomeDate'
+  | 'isRecurring'
+  | 'recurringPeriod'
+  | 'transactions'
+  | 'user'
+  | IncomeKeySpecifier
+)[];
+export type IncomeFieldPolicy = {
+  account?: FieldPolicy<any> | FieldReadFunction<any>;
+  category?: FieldPolicy<any> | FieldReadFunction<any>;
+  id?: FieldPolicy<any> | FieldReadFunction<any>;
+  incomeDate?: FieldPolicy<any> | FieldReadFunction<any>;
+  isRecurring?: FieldPolicy<any> | FieldReadFunction<any>;
+  recurringPeriod?: FieldPolicy<any> | FieldReadFunction<any>;
+  transactions?: FieldPolicy<any> | FieldReadFunction<any>;
+  user?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type MutationKeySpecifier = (
   | 'createAccount'
-  | 'createTransaction'
   | 'deleteAccount'
-  | 'deleteTransaction'
   | 'updateAccount'
-  | 'updateTransaction'
   | MutationKeySpecifier
 )[];
 export type MutationFieldPolicy = {
   createAccount?: FieldPolicy<any> | FieldReadFunction<any>;
-  createTransaction?: FieldPolicy<any> | FieldReadFunction<any>;
   deleteAccount?: FieldPolicy<any> | FieldReadFunction<any>;
-  deleteTransaction?: FieldPolicy<any> | FieldReadFunction<any>;
   updateAccount?: FieldPolicy<any> | FieldReadFunction<any>;
-  updateTransaction?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type QueryKeySpecifier = (
   | 'accounts'
-  | 'transactions'
+  | 'expenses'
+  | 'financialSummary'
+  | 'incomes'
+  | 'recentTransactions'
   | 'user'
   | QueryKeySpecifier
 )[];
 export type QueryFieldPolicy = {
   accounts?: FieldPolicy<any> | FieldReadFunction<any>;
-  transactions?: FieldPolicy<any> | FieldReadFunction<any>;
+  expenses?: FieldPolicy<any> | FieldReadFunction<any>;
+  financialSummary?: FieldPolicy<any> | FieldReadFunction<any>;
+  incomes?: FieldPolicy<any> | FieldReadFunction<any>;
+  recentTransactions?: FieldPolicy<any> | FieldReadFunction<any>;
   user?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type TransactionKeySpecifier = (
-  | 'account'
   | 'amount'
-  | 'category'
+  | 'description'
   | 'id'
-  | 'note'
+  | 'transactable'
   | 'transactionDate'
-  | 'transactionType'
+  | 'user'
   | TransactionKeySpecifier
 )[];
 export type TransactionFieldPolicy = {
-  account?: FieldPolicy<any> | FieldReadFunction<any>;
   amount?: FieldPolicy<any> | FieldReadFunction<any>;
-  category?: FieldPolicy<any> | FieldReadFunction<any>;
+  description?: FieldPolicy<any> | FieldReadFunction<any>;
   id?: FieldPolicy<any> | FieldReadFunction<any>;
-  note?: FieldPolicy<any> | FieldReadFunction<any>;
+  transactable?: FieldPolicy<any> | FieldReadFunction<any>;
   transactionDate?: FieldPolicy<any> | FieldReadFunction<any>;
-  transactionType?: FieldPolicy<any> | FieldReadFunction<any>;
+  user?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type UserKeySpecifier = (
   | 'createdAt'
@@ -163,12 +209,26 @@ export type StrictTypedTypePolicies = {
       | (() => undefined | DeleteAccountPayloadKeySpecifier);
     fields?: DeleteAccountPayloadFieldPolicy;
   };
-  DeleteTransactionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+  Expense?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
     keyFields?:
       | false
-      | DeleteTransactionPayloadKeySpecifier
-      | (() => undefined | DeleteTransactionPayloadKeySpecifier);
-    fields?: DeleteTransactionPayloadFieldPolicy;
+      | ExpenseKeySpecifier
+      | (() => undefined | ExpenseKeySpecifier);
+    fields?: ExpenseFieldPolicy;
+  };
+  FinancialSummary?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+    keyFields?:
+      | false
+      | FinancialSummaryKeySpecifier
+      | (() => undefined | FinancialSummaryKeySpecifier);
+    fields?: FinancialSummaryFieldPolicy;
+  };
+  Income?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+    keyFields?:
+      | false
+      | IncomeKeySpecifier
+      | (() => undefined | IncomeKeySpecifier);
+    fields?: IncomeFieldPolicy;
   };
   Mutation?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
     keyFields?:

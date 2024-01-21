@@ -1,0 +1,4 @@
+fragment TotalBalanceCardFinancialSummary on FinancialSummary {
+  totalBalance
+  totalSavingsByCurrentMonth
+}
