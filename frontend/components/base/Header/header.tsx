@@ -1,6 +1,6 @@
-import { HeaderUserData as User } from 'components/Header/__generated__/header.gql';
-import { Navbar } from 'components/Navbar/Navbar';
-import { Profile } from 'components/Profile/Profile';
+import { Navbar } from '../Navbar/Navbar';
+import { Profile } from '../Profile/Profile';
+import { HeaderUserData as User } from './__generated__/header.gql';
 
 type HeaderProps = {
   user: User | undefined;

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-import * as Types from '../../../graphql/__generated__/types';
+import * as Types from '../../../../graphql/__generated__/types';
 import { ProfileUserData } from '../../Profile/__generated__/Profile.gql';
 
 export type HeaderUserData = {

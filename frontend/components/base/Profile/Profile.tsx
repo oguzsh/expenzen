@@ -1,6 +1,6 @@
 import { getGreetingMessage } from 'utils';
 
-import { ProfileUserData as User } from 'components/Profile/__generated__/Profile.gql';
+import { ProfileUserData as User } from './__generated__/Profile.gql';
 
 type ProfileProps = {
   user: User | undefined;
