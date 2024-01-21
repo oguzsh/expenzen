@@ -28,4 +28,6 @@ class Transaction < ApplicationRecord
   validates :user, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :transaction_date, presence: true
+
+  scope :recent_transactions, -> { order(transaction_date: :desc).limit(10) }
 end
